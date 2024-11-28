@@ -12,7 +12,7 @@ export const createDB = (req, response) => {
 
 //criar tabela
 export const createTable = (req, response) => {
-    let query = "CREATE TABLE tarefas(id INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(100) UNIQUE NOT NULL, custo DECIMAL(10,2), data_limite DATE NOT NULL, ordem_apresentacao INT UNIQUE NOT NULL)"
+    let query = "CREATE TABLE tarefas(id INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(100) UNIQUE NOT NULL, custo DECIMAL(10,2), data_limite DATE NOT NULL, ordem_apresentacao INT  NOT NULL)"
     db.query(query, (err, result) => {
         if (err) throw err
         return response.status(201).json({ message: "Tabela criada!" })
@@ -58,7 +58,6 @@ export const showUmaTarefa = (req, response) => {
 
 export const updateTarefa = (req, response) => {
     const { nome, custo, data_limite, ordem_apresentacao } = req.body
-
     const query = `UPDATE tarefas SET ? WHERE id=${req.params.id}`
 
     db.query(query, { nome, custo, data_limite, ordem_apresentacao }, (err, result) => {
