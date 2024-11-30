@@ -193,6 +193,7 @@ function App() {
                 .toISOString()
                 .split("T")[0];
             setDataLimite(formattedDate);
+            setOrdem_apresentacao(editTarefa.ordem_apresentacao);
         } catch (error) {
             console.log(error);
         }
@@ -212,6 +213,7 @@ function App() {
             alert("Já existe uma tarefa com esse nome!");
             return;
         }
+        console.log(dataTarefas);
 
         try {
             const edit = await axios.put(

@@ -1,17 +1,17 @@
-import mysql from "mysql";
+import pkg from "pg";
+const { Pool } = pkg;
 
-const db = mysql.createConnection({
+const db = new Pool({
     host: "localhost",
-    user: "root",
+    user: "postgres",
     password: "90903818",
     database: "fatto_do_list",
-    port: 3306,
+    port: 5432,
 });
 
-// open the MySQL connection
-db.connect((error) => {
-    if (error) throw error;
-    console.log("DB connected");
-});
+// Teste a conexão
+db.connect()
+    .then(() => console.log("PostgreSQL conectado"))
+    .catch((err) => console.error("Erro ao conectar no PostgreSQL:", err));
 
 export default db;
