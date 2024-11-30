@@ -20,7 +20,7 @@ function App() {
     const [editarTarefa, setEditarTarefa] = useState(false);
     const [dataTarefas, setDataTarefas] = useState<Tarefa[]>([]);
     const [selectedId, setSelectedId] = useState<number | null>(null);
-
+    const API_URL = process.env.REACT_APP_API_URL;
     //conferir se o valor de 'custo' esta correto
 
     const checkCusto = () => {
@@ -90,15 +90,12 @@ function App() {
             : null;
 
         try {
-            await axios.put(
-                `http://localhost:8000/api/update/tarefa/${tarefa.id}`,
-                {
-                    nome: tarefa.nome,
-                    custo: tarefa.custo ?? 0,
-                    data_limite: data_limite,
-                    ordem_apresentacao: tarefa.ordem_apresentacao,
-                }
-            );
+            await axios.put(`${API_URL}/update/tarefa/${tarefa.id}`, {
+                nome: tarefa.nome,
+                custo: tarefa.custo ?? 0,
+                data_limite: data_limite,
+                ordem_apresentacao: tarefa.ordem_apresentacao,
+            });
         } catch (error) {
             console.error("Erro ao atualizar ordem:", error);
         }
@@ -108,9 +105,7 @@ function App() {
 
     const showTarefas = async () => {
         try {
-            const response = await axios.get(
-                "http://localhost:8000/api/show/tarefas"
-            );
+            const response = await axios.get(`${API_URL}/show/tarefas`);
             const data = response.data;
             setDataTarefas(data);
         } catch (error) {
@@ -131,15 +126,12 @@ function App() {
         }
         try {
             if (checkCusto()) {
-                const add = await axios.post(
-                    "http://localhost:8000/api/create/list",
-                    {
-                        nome,
-                        custo,
-                        data_limite,
-                        ordem_apresentacao,
-                    }
-                );
+                const add = await axios.post(`${API_URL}/create/list`, {
+                    nome,
+                    custo,
+                    data_limite,
+                    ordem_apresentacao,
+                });
                 if (add.status === 200) {
                     setNome("");
                     setCusto(0);
@@ -164,7 +156,7 @@ function App() {
         if (confirmDelete) {
             try {
                 const deleteTarefa = await axios.delete(
-                    `http://localhost:8000/api/delete/tarefa/${id}`
+                    `${API_URL}/delete/tarefa/${id}`
                 );
                 if (deleteTarefa.status === 200) {
                     showTarefas();
@@ -183,9 +175,7 @@ function App() {
         setEditarTarefa(!editarTarefa);
         setSelectedId(id);
         try {
-            const response = await axios.get(
-                `http://localhost:8000/api/show/${id}`
-            );
+            const response = await axios.get(`${API_URL}/show/${id}`);
             const editTarefa = response.data;
             setNome(editTarefa.nome);
             setCusto(editTarefa.custo);
@@ -217,7 +207,7 @@ function App() {
 
         try {
             const edit = await axios.put(
-                `http://localhost:8000/api/update/tarefa/${selectedId}`,
+                `${API_URL}/update/tarefa/${selectedId}`,
                 {
                     nome,
                     custo,
