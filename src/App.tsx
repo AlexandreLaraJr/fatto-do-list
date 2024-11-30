@@ -20,7 +20,8 @@ function App() {
     const [editarTarefa, setEditarTarefa] = useState(false);
     const [dataTarefas, setDataTarefas] = useState<Tarefa[]>([]);
     const [selectedId, setSelectedId] = useState<number | null>(null);
-    const API_URL = process.env.REACT_APP_API_URL;
+    // const API_URL = process.env.REACT_APP_API_URL;
+    const API_URL = "https://fatto-do-list.netlify.app/api";
     //conferir se o valor de 'custo' esta correto
 
     const checkCusto = () => {
