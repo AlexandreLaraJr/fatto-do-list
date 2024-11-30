@@ -12,9 +12,7 @@ const db = new Pool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT || 5432,
-    ssl: {
-        rejectUnauthorized: true,
-    },
+    ssl: require
 });
 
 // Teste a conexão
