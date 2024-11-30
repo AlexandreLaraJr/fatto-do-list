@@ -116,6 +116,7 @@ function App() {
     //adicionar tarefa
 
     const addTarefa = async (e: { preventDefault: () => void }) => {
+        console.log("api url", process.env.REACT_APP_API_URL);
         e.preventDefault();
         setOrdem_apresentacao(dataTarefas.length + 1);
         const data_limite = dataLimite;
