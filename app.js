@@ -40,6 +40,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(bodyParser.urlencoded({ limit: "5mb", extended: true }));
 app.use(cors());
+console.log(app.use(cors()))
 
 // Rotas
 app.use("/api", todos);
