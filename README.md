@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Fatto do list
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O projeto **Fatto Do List** consiste em uma simples lista de tarefas, onde as tarefas adicionadas pelo usuário são salvas em um banco de dados PostgreSQL.
 
-Currently, two official plugins are available:
+##  Nesse projeto foi utilizado:
+- **React**: Biblioteca para construção de interfaces de usuário.
+- **TypeScript**: Superset do JavaScript para garantir tipagem estática.
+- **Node.js**: Ambiente de execução para JavaScript no servidor.
+- **Tailwind**: Framework CSS utilitário.
+- **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Pré-requisitos
 
-## Expanding the ESLint configuration
+Antes de começar, certifique-se de ter instalado em sua máquina:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Node.js](https://nodejs.org/) (versão LTS recomendada)
+- [npm](https://www.npmjs.com/) (geralmente já vem com o Node.js)
+- Banco de dados **PostgreSQL**, devidamente configurado.
 
-- Configure the top-level `parserOptions` property like this:
+## Como instalar e executar o projeto
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Siga os passos abaixo para configurar e rodar o projeto localmente.
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/AlexandreLaraJr/fatto-do-list.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Instale as dependências
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+npm install
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Iniciando o projeto
+Comandos para a inicialização do projeto
+### 1.Back-end
+```bash
+npm start
+```
+### 2. Front-end
+
+```bash
+npm run dev
 ```
